@@ -188,7 +188,7 @@ const config = {
     { id: "prompts", label: "Prompt templates (voice + characters)" },
     { id: "checklist", label: "Production checklist" },
     { id: "recording", label: "Full screen recording of one complete reel, in chapters" },
-    { id: "call", label: "45-minute 1:1 strategy call on video" },
+    { id: "call", label: "30-minute 1:1 call" },
     { id: "review", label: "Review of your page or idea" },
     { id: "plan", label: "A plan for your first series" },
   ],

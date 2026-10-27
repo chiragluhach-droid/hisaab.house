@@ -11,7 +11,7 @@ export function Inside() {
         index="03"
         label="What's inside"
         title="Everything I do, written down."
-        intro="Both passes include the playbook. The Over-the-Shoulder Pass adds a full recording of one reel being made, start to finish, plus a 45-minute 1:1 call."
+        intro="Both passes include the playbook. The Over-the-Shoulder Pass adds a full recording of one reel being made, start to finish, plus a 30-minute 1:1 call."
       />
       <div className="mt-10 grid gap-4 md:grid-cols-2 md:gap-6">
         {[playbook, recording].map((part) => (
