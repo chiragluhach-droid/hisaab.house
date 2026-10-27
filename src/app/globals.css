@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #141110;
+  --color-ink-2: #1b1715;
+  --color-ink-3: #24201d;
+  --color-line: rgb(241 235 221 / 0.12);
+  --color-line-strong: rgb(241 235 221 / 0.22);
+  --color-cream: #f1ebdd;
+  --color-cream-hi: #fff8ec;
+  --color-muted: #a8a296;
+  --color-red: #e8342b;
+  /* Button fill: brand red, a touch deeper so cream text passes WCAG AA (5:1). */
+  --color-red-deep: #cf2a22;
+  /* Lighter red for small text on dark — keeps AA contrast. */
+  --color-red-text: #ff6a5c;
+  --color-mustard: #f2b517;
+  --color-maroon: #7a1f2b;
+
+  --font-sans: "Rupee Sans", var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Rupee Mono", var(--font-jbm), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --animate-ticker: ticker 60s linear infinite;
+  --animate-blink: blink 1.6s steps(2, jump-none) infinite;
+
+  @keyframes ticker {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0.2; }
+  }
+}
+
+/* The ₹ sign lives in Inter's 85 KB "latin-ext" file. These one-glyph files
+   (2 KB each) supply it instead, so phones only download the Latin subset. */
+@font-face {
+  font-family: "Rupee Sans";
+  src: url("/fonts/inter-rupee.woff2") format("woff2");
+  font-weight: 400 800;
+  font-display: swap;
+  unicode-range: U+20B9;
+}
+@font-face {
+  font-family: "Rupee Mono";
+  src: url("/fonts/jetbrainsmono-rupee.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+20B9;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Anchored headings clear the sticky header. */
+    scroll-padding-top: 80px;
+    background: var(--color-ink);
+    color-scheme: dark;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  body {
+    background: var(--color-ink);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+  }
+  ::selection { background: var(--color-mustard); color: var(--color-ink); }
+
+  :focus-visible {
+    outline: 2px solid var(--color-mustard);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1, h2, h3 { text-wrap: balance; letter-spacing: -0.02em; }
+  p { text-wrap: pretty; }
+
+  summary { list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+}
+
+@layer components {
+  /* Small monospace "case file" label. */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 52px;
+    padding: 0 1.375rem;
+    border-radius: 12px;
+    font-weight: 650;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-align: center;
+    transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    touch-action: manipulation;
+    user-select: none;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary {
+    background: var(--color-red-deep);
+    color: var(--color-cream-hi);
+    box-shadow: 0 1px 0 rgb(255 255 255 / 0.18) inset, 0 8px 24px -10px rgb(232 52 43 / 0.7);
+  }
+  .btn-primary:hover { background: #d62e25; }
+  .btn-secondary {
+    border: 1px solid var(--color-line-strong);
+    color: var(--color-cream);
+    background: rgb(241 235 221 / 0.03);
+  }
+  .btn-secondary:hover { border-color: rgb(241 235 221 / 0.4); background: rgb(241 235 221 / 0.06); }
+
+  .card {
+    background: var(--color-ink-2);
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+  }
+  /* Tap feedback everywhere, gentle lift on devices that can hover. */
+  .card-interactive {
+    transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  }
+  .card-interactive:active { transform: scale(0.985); }
+  @media (hover: hover) and (pointer: fine) {
+    .card-interactive:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-line-strong);
+      box-shadow: 0 18px 40px -24px rgb(0 0 0 / 0.8);
+    }
+  }
+
+  /* Rubber-stamp detail. */
+  .stamp {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.55rem;
+    border: 1.5px solid currentColor;
+    border-radius: 4px;
+    transform: rotate(-4deg);
+  }
+
+
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+/* Mobile menu entrance: panel fades, items rise in one after another. */
+@keyframes menu-fade { from { opacity: 0; } }
+@keyframes menu-rise { from { opacity: 0; transform: translate3d(0, 12px, 0); } }
+.menu-panel { animation: menu-fade 200ms ease-out both; }
+.menu-item {
+  animation: menu-rise 380ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 45ms + 60ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
