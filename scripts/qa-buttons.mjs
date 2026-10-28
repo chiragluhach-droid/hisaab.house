@@ -6,9 +6,9 @@ import { chromium } from "playwright";
 const SITE = process.env.SITE_URL ?? "http://localhost:4173/";
 const NUMBER = "918130809374";
 const EXPECTED = {
-  hisaab: "Hi Hisaab House, I'd like to purchase the Hisaab Pass (₹499).",
-  ots: "Hi Hisaab House, I'd like to purchase the Over-the-Shoulder Pass (₹999).",
-  general: "Hi Hisaab House, I have a question about your passes.",
+  guide: "Hi Hisaab House, I'd like to purchase the Hisaab Guide (₹499).",
+  founder: "Hi Hisaab House, I'd like to purchase the Founder's Pass (₹999).",
+  general: "Hi Hisaab House, I have a question about the Hisaab Guide.",
 };
 const IG_UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 350.0.0.0";
 

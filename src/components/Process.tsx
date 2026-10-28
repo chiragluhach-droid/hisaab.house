@@ -10,7 +10,7 @@ export function Process() {
         index="02"
         label="Process"
         title="From idea to vote, in six steps."
-        intro="The same workflow behind every episode. The passes break each step down in detail."
+        intro="The same workflow behind every episode. The Hisaab Guide breaks each step down in detail."
       />
       <ol className="relative mt-10 grid gap-3 md:grid-cols-3 md:gap-5">
         {/* Timeline spine on phones */}

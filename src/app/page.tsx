@@ -2,6 +2,7 @@ import { Audience } from "@/components/Audience";
 import { Closing } from "@/components/Closing";
 import { Faq } from "@/components/Faq";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { Founders } from "@/components/Founders";
 import { Hero } from "@/components/Hero";
 import { Inside } from "@/components/Inside";
 import { Pricing } from "@/components/Pricing";
@@ -21,6 +22,7 @@ export default function Home() {
         <Work />
         <Process />
         <Inside />
+        <Founders />
         <Pricing />
         <Audience />
         <Faq />

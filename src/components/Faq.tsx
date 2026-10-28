@@ -8,7 +8,7 @@ export function Faq() {
     <Section id="faq" className="border-t border-line">
       <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-14">
         <div>
-          <SectionHeading id="faq-title" index="06" label="FAQ" title="Questions, answered." />
+          <SectionHeading id="faq-title" index="07" label="FAQ" title="Questions, answered." />
           <div className="mt-6 hidden md:block">
             <FaqContact />
           </div>

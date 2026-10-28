@@ -6,7 +6,7 @@ export function Audience() {
   const { audience } = config;
   return (
     <Section id="fit" className="border-t border-line">
-      <SectionHeading id="fit-title" index="05" label="Fit" title="Is this for you?" intro="An honest answer before you spend anything." />
+      <SectionHeading id="fit-title" index="06" label="Fit" title="Is this for you?" intro="An honest answer before you spend anything." />
       <div className="mt-10 grid gap-4 md:grid-cols-2 md:gap-6">
         <div className="card p-6">
           <h3 className="label !text-mustard">Who it’s for</h3>

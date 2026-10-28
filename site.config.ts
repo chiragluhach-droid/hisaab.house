@@ -8,7 +8,7 @@
  * Search for "TODO" to find everything that still needs your input.
  */
 
-export type ProductId = "hisaab" | "ots";
+export type ProductId = "guide" | "founder";
 
 export type Product = {
   id: ProductId;
@@ -29,6 +29,8 @@ export type Product = {
   cta: string;
   /** Feature ids (see `features` below) this product includes. */
   includes: string[];
+  /** Short bullets for the pricing card (defaults to the `includes` labels). The first one is highlighted. */
+  cardLines?: string[];
 };
 
 const config = {
@@ -65,18 +67,19 @@ const config = {
   nav: [
     { id: "work", label: "Work", hint: "The series and its covers" },
     { id: "process", label: "Process", hint: "Six steps, idea to vote" },
-    { id: "inside", label: "What's inside", hint: "Playbook and recording chapters", desktop: false },
-    { id: "passes", label: "Passes", hint: "Compare the two passes" },
+    { id: "inside", label: "What's inside", hint: "Every chapter of the guide", desktop: false },
+    { id: "founders", label: "Founder's Pass", hint: "Your @ in the story" },
+    { id: "passes", label: "Pricing", hint: "Guide or Founder's Pass" },
     { id: "faq", label: "FAQ", hint: "Payment, delivery and tools" },
   ],
 
   /** WhatsApp messages that aren't tied to a product. */
   messages: {
-    general: "Hi Hisaab House, I have a question about your passes.",
+    general: "Hi Hisaab House, I have a question about the Hisaab Guide.",
   },
 
   stats: {
-    followers: { value: 25.6, suffix: "K", decimals: 1, label: "Followers" },
+    followers: { value: 25.7, suffix: "K", decimals: 1, label: "Followers" },
     views7d: { value: 5, suffix: "M+", decimals: 0, label: "Views & interactions (7 days)" },
     topEpisode: { value: 2.5, suffix: "M+", decimals: 1, label: "Top episode" },
   },
@@ -88,19 +91,20 @@ const config = {
     highlight: "25K+",
     subheadline:
       "Faceless AI story reels — script, voice, visuals and edit. The complete workflow, step by step.",
-    primaryCta: "Get the Pass · ₹499",
+    /** Scrolls to the pricing section. */
+    primaryCta: "Get the pass",
     secondaryCta: "See what's inside",
   },
 
   video: {
-    src: "https://res.cloudinary.com/dffvbp9to/video/upload/q_auto,f_auto/v1793119502/hisaab-promo-silent_mbscxx.mp4",
+    src: "https://res.cloudinary.com/dffvbp9to/video/upload/q_auto,f_auto/v1793162048/hisaab-promo-silent_1_xlfyhh.mp4",
     original:
-      "https://res.cloudinary.com/dffvbp9to/video/upload/v1793119502/hisaab-promo-silent_mbscxx.mp4",
+      "https://res.cloudinary.com/dffvbp9to/video/upload/v1793162048/hisaab-promo-silent_1_xlfyhh.mp4",
     poster:
-      "https://res.cloudinary.com/dffvbp9to/video/upload/so_15,q_auto,f_auto/v1793119502/hisaab-promo-silent_mbscxx.jpg",
+      "https://res.cloudinary.com/dffvbp9to/video/upload/so_15,q_auto,f_auto/v1793162048/hisaab-promo-silent_1_xlfyhh.jpg",
     /** Smaller poster for phones (Cloudinary resizes on the fly). */
     posterMobile:
-      "https://res.cloudinary.com/dffvbp9to/video/upload/so_15,w_600,q_auto,f_auto/v1793119502/hisaab-promo-silent_mbscxx.jpg",
+      "https://res.cloudinary.com/dffvbp9to/video/upload/so_15,w_600,q_auto,f_auto/v1793162048/hisaab-promo-silent_1_xlfyhh.jpg",
     aspect: "3 / 4",
     label: "Promo · 0:18",
   },
@@ -152,7 +156,7 @@ const config = {
 
   inside: {
     playbook: {
-      title: "The playbook",
+      title: "The Hisaab Guide",
       meta: "PDF · optional Notion version",
       chapters: [
         { title: "Finding a story", text: "Where ideas come from and how to hook viewers in the first 3 seconds." },
@@ -167,58 +171,61 @@ const config = {
         { title: "Bonus: production checklist", text: "Every step from idea to post, on one page." },
       ],
     },
-    recording: {
-      title: "The screen recording",
-      meta: "Over-the-Shoulder Pass", // TODO: add total runtime, e.g. "2 h 10 min"
-      chapters: [
-        { title: "Idea", text: "Choosing the story for the reel." },
-        { title: "Script", text: "Writing it from blank page to final draft." },
-        { title: "Voice", text: "Generating and picking the voiceover." },
-        { title: "Images", text: "Creating every scene with consistent characters." },
-        { title: "Edit", text: "Captions, HUD, fact cards and timing." },
-        { title: "Cover", text: "Designing the cover frame." },
-        { title: "Post", text: "Caption, posting and the comment vote." },
-      ],
-    },
   },
 
   /** Every feature that can appear in the comparison. */
   features: [
-    { id: "playbook", label: "Step-by-step playbook (PDF + optional Notion)" },
+    { id: "story", label: "Your @ as a character in the series" },
+    { id: "playbook", label: "Step-by-step guide (PDF + Notion)" },
     { id: "prompts", label: "Prompt templates (voice + characters)" },
     { id: "checklist", label: "Production checklist" },
-    { id: "recording", label: "Full screen recording of one complete reel, in chapters" },
-    { id: "call", label: "30-minute 1:1 call" },
-    { id: "review", label: "Review of your page or idea" },
-    { id: "plan", label: "A plan for your first series" },
+    { id: "call", label: "1:1 call to plan your first series" },
   ],
 
   products: [
     {
-      id: "hisaab",
-      name: "Hisaab Pass",
+      id: "guide",
+      name: "Hisaab Guide",
       price: 499,
-      tagline: "The complete playbook for making reels like mine.",
-      message: "Hi Hisaab House, I'd like to purchase the Hisaab Pass (₹499).",
+      tagline: "Everything I do to make these reels, step by step — plus a 1:1 call.",
+      message: "Hi Hisaab House, I'd like to purchase the Hisaab Guide (₹499).",
       buyUrl: null,
-      cta: "Get the Pass · ₹499",
-      includes: ["playbook", "prompts", "checklist"],
+      cta: "Get the Guide · ₹499",
+      includes: ["playbook", "prompts", "checklist", "call"],
     },
     {
-      id: "ots",
-      name: "Over-the-Shoulder Pass",
+      id: "founder",
+      name: "Founder's Pass",
       price: 999,
-      tagline: "The playbook, a start-to-finish recording of one reel, and a 1:1 call to plan your first series.",
-      badge: "Most popular",
-      message: "Hi Hisaab House, I'd like to purchase the Over-the-Shoulder Pass (₹999).",
+      tagline: "Become a character in Har Note Ka Hisaab Hota Hai. The full guide comes with it.",
+      badge: "Be in the story",
+      message: "Hi Hisaab House, I'd like to purchase the Founder's Pass (₹999).",
       buyUrl: null,
-      cta: "Get the Pass · ₹999",
-      includes: ["playbook", "prompts", "checklist", "recording", "call", "review", "plan"],
+      cta: "Become a Founder · ₹999",
+      includes: ["story", "playbook", "prompts", "checklist", "call"],
+      cardLines: ["Be a part of the story", "Your @ as a character in the series", "(Guide included & 1:1 call)"],
     },
   ] satisfies Product[] as Product[],
 
+  /** The "Your @ in the story" section for the Founder's Pass. */
+  founders: {
+    eyebrow: "Founder's Pass",
+    headline: "Your @ in the story.",
+    /** Part of the headline shown in mustard. */
+    highlight: "in the story.",
+    text: "Founders become characters in Har Note Ka Hisaab Hota Hai — your Instagram @, part of the series. The full Hisaab Guide comes with it.",
+    // TODO: describe how a founder's character shows up (e.g. named on screen, on the case board).
+    ticketNote: "Character in the series",
+    steps: [
+      { title: "Get the pass", text: "Tap the button — WhatsApp opens with your message ready." },
+      { title: "Send your @", text: "Pay, then reply with your Instagram handle." },
+      { title: "We write you in", text: "Your @ becomes a character in the story." },
+      { title: "You're in the series", text: "Spot yourself as the story unfolds." },
+    ],
+  },
+
   pricingNote:
-    "Message us on WhatsApp to purchase — we'll share payment details and deliver your pass there. We usually reply within 1–2 hours.",
+    "Message us on WhatsApp to purchase — we'll share payment details and deliver everything there. We usually reply within 1–2 hours.",
 
   audience: {
     for: [
@@ -244,12 +251,16 @@ const config = {
       a: "You need an AI image tool, an AI voice tool and a video editor. The playbook covers the tools used at each step. TODO: list the exact tools and their monthly cost here.",
     },
     {
-      q: "How do I pay and receive the pass?",
-      a: "Tap any buy button and WhatsApp opens with a pre-filled message. We reply with payment details, and once payment is confirmed we deliver your pass on WhatsApp.",
+      q: "How do I pay and receive the guide?",
+      a: "Tap any buy button and WhatsApp opens with a pre-filled message. We reply with payment details, and once payment is confirmed we deliver the guide on WhatsApp and set up your 1:1 call there.",
+    },
+    {
+      q: "What does \"your @ in the story\" mean?",
+      a: "With the Founder's Pass, your Instagram @ becomes a character in Har Note Ka Hisaab Hota Hai — you're part of the series. You also get the full Hisaab Guide and the 1:1 call. TODO: describe how a founder's character shows up.",
     },
     {
       q: "What language is the content in?",
-      a: "TODO: confirm the language of the playbook and recording (e.g. English, or Hinglish). The example series itself is in Hinglish.",
+      a: "TODO: confirm the language of the guide (e.g. English, or Hinglish). The example series itself is in Hinglish.",
     },
     {
       q: "Can I ask questions after purchase?",
@@ -260,7 +271,7 @@ const config = {
   closing: {
     eyebrow: "Case open",
     headline: "Start your first series.",
-    text: "Questions before you buy? Message us — we'll help you pick the right pass.",
+    text: "Questions before you buy? Message us — we'll help you pick the guide or the Founder's Pass.",
     cta: "Chat on WhatsApp",
     /** ISO date of the next launch, e.g. "2026-11-15T19:00:00+05:30". `null` hides the countdown. */
     nextLaunch: null as string | null,
@@ -268,7 +279,7 @@ const config = {
   },
 
   footer: {
-    note: "Passes are delivered on WhatsApp after payment.",
+    note: "The guide is delivered on WhatsApp after payment.",
   },
 };
 

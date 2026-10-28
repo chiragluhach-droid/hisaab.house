@@ -3,7 +3,7 @@ import config, { type ProductId } from "@config";
 export type Topic = ProductId | "general";
 
 /** Where on the page a buy/chat button lives — sent with the analytics event. */
-export type Placement = "hero" | "card" | "floating" | "faq" | "closing" | "header" | "menu" | "footer";
+export type Placement = "hero" | "card" | "founders" | "floating" | "faq" | "closing" | "header" | "menu" | "footer";
 
 export function product(id: ProductId) {
   const p = config.products.find((x) => x.id === id);

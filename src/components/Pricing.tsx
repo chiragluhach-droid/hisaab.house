@@ -11,13 +11,13 @@ export function Pricing() {
       <div>
         <SectionHeading
           id="passes-title"
-          index="04"
-          label="Passes"
-          title="Choose your pass."
+          index="05"
+          label="Pricing"
+          title="Pick your file."
           intro="One-time payment. No subscription."
         />
 
-        <div className="mx-auto mt-10 grid max-w-4xl gap-5 md:grid-cols-2 md:items-stretch">
+        <div className="mx-auto mt-8 grid max-w-4xl gap-6 md:mt-10 md:grid-cols-2 md:gap-5 md:items-stretch">
           {products.map((p) => (
             <PriceCard key={p.id} p={p} />
           ))}
@@ -30,7 +30,7 @@ export function Pricing() {
 
         {/* Comparison table — wider screens only. On phones each card carries its own checklist. */}
         <div className="mx-auto mt-14 hidden max-w-4xl md:block">
-          <h3 className="text-xl font-semibold">Compare the passes</h3>
+          <h3 className="text-xl font-semibold">Compare</h3>
           <table className="mt-5 w-full table-fixed border-separate border-spacing-0 overflow-hidden rounded-2xl border border-line text-left">
             <thead>
               <tr className="bg-ink-2">
@@ -75,46 +75,55 @@ export function Pricing() {
 
 function PriceCard({ p }: { p: Product }) {
   const featured = Boolean(p.badge);
-  const included = config.features.filter((f) => p.includes.includes(f.id));
-  // On phones, cards also list what they don't include, so they double as the comparison.
-  const missing = config.features.filter((f) => !p.includes.includes(f.id));
+  const lines = p.cardLines ?? config.features.filter((f) => p.includes.includes(f.id)).map((f) => f.label);
+  // Only the Founder's Pass leads with a highlighted line (its @ in the story).
+  const highlightFirst = Boolean(p.cardLines);
 
   return (
     <article
       aria-labelledby={`price-${p.id}`}
-      className={`card card-interactive relative flex flex-col p-6 md:p-7 ${
+      className={`card card-interactive relative flex flex-col p-5 md:p-7 ${p.badge ? "pt-8 md:pt-9" : ""} ${
         featured ? "!border-red/70 bg-[linear-gradient(180deg,rgb(232_52_43/0.12),transparent_55%)] shadow-[0_0_0_1px_rgb(232_52_43/0.35),0_24px_60px_-30px_rgb(232_52_43/0.55)]" : ""
       }`}
     >
       {p.badge && <span className="stamp absolute -top-3.5 right-5 bg-ink text-red-text">{p.badge}</span>}
-      <h3 id={`price-${p.id}`} className="text-xl font-semibold">
-        {p.name}
-      </h3>
-      <p className="mt-4 flex items-baseline gap-2">
-        <span className="font-mono text-[2.75rem] font-semibold leading-none tracking-tight">{formatPrice(p)}</span>
-        <span className="label">One-time</span>
-      </p>
-      <p className="mt-3 text-[0.9375rem] leading-relaxed text-cream/75">{p.tagline}</p>
+      <div className="flex items-end justify-between gap-3">
+        <h3 id={`price-${p.id}`} className="text-lg font-semibold leading-tight md:text-xl">
+          {p.name}
+        </h3>
+        <p className="flex shrink-0 items-baseline gap-1.5">
+          <span className="font-mono text-[2rem] font-semibold leading-none tracking-tight md:text-[2.75rem]">{formatPrice(p)}</span>
+          <span className="label !text-[0.625rem]">One-time</span>
+        </p>
+      </div>
+      <p className="mt-2.5 text-[0.875rem] leading-snug text-cream/70 md:mt-3 md:text-[0.9375rem] md:leading-relaxed">{p.tagline}</p>
 
-      <ul className="mt-5 flex flex-1 flex-col gap-2.5 border-t border-line pt-5 text-[0.9375rem]">
-        {included.map((f) => (
-          <li key={f.id} className="flex gap-3">
-            <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-mustard" />
-            <span>{f.label}</span>
-          </li>
-        ))}
-        {missing.map((f) => (
-          <li key={f.id} className="flex gap-3 text-cream/55 md:hidden">
-            <DashIcon className="mt-0.5 h-5 w-5 shrink-0" />
-            <span>
-              <span className="sr-only">Not included: </span>
-              {f.label}
-            </span>
-          </li>
-        ))}
+      <ul className="mt-4 flex flex-1 flex-col gap-2 border-t border-line pt-4 text-[0.9375rem] leading-snug md:mt-5 md:gap-2.5 md:pt-5">
+        {lines.map((label, i) => {
+          const hi = highlightFirst && i === 0;
+          // A bracketed line, e.g. "(Guide included & 1:1 call)", reads as a footnote to the line above.
+          if (label.startsWith("("))
+            return (
+              <li key={label} className="pl-[1.875rem] text-[0.875rem] text-cream/60">
+                {label}
+              </li>
+            );
+          return (
+            <li key={label} className={`flex gap-2.5 ${hi ? "font-semibold text-mustard" : ""}`}>
+              {hi ? (
+                <span aria-hidden className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mustard font-mono text-[0.6875rem] font-bold text-ink">
+                  @
+                </span>
+              ) : (
+                <CheckIcon className="h-5 w-5 shrink-0 text-mustard" />
+              )}
+              <span>{label}</span>
+            </li>
+          );
+        })}
       </ul>
 
-      <BuyLink topic={p.id} placement="card" className={`btn mt-7 w-full ${featured ? "btn-primary" : "btn-secondary"}`}>
+      <BuyLink topic={p.id} placement="card" className={`btn mt-5 w-full md:mt-7 ${featured ? "btn-primary" : "btn-secondary"}`}>
         <WhatsAppIcon className="h-5 w-5" />
         {p.cta}
       </BuyLink>

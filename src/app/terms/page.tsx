@@ -9,32 +9,36 @@ export default function Terms() {
   return (
     <LegalPage title="Terms">
       <p>
-        These terms apply when you buy a pass from {legal.businessName}. By completing a purchase you agree to them.
+        These terms apply when you buy the Hisaab Guide or the Founder’s Pass from {legal.businessName}. By completing a purchase you agree to them.
       </p>
       <h2>Buying a pass</h2>
       <ul>
         <li>Purchases are made on WhatsApp. Tap a buy button, send the message, and we’ll reply with payment details.</li>
         <li>All prices are in Indian Rupees (INR) and are one-time payments.</li>
         <li>
-          <strong>Passes are delivered on WhatsApp after payment.</strong> Once payment is confirmed, we send your pass files or access links
+          <strong>Everything is delivered on WhatsApp after payment.</strong> Once payment is confirmed, we send your guide files or access links
           in the same chat.
         </li>
-        <li>The 1:1 call included with the Over-the-Shoulder Pass is scheduled on WhatsApp at a time that suits us both.</li>
+        <li>The 1:1 call is scheduled on WhatsApp at a time that suits us both.</li>
+        <li>
+          Founder’s Pass: your Instagram handle appears as a character in the series. We may decline handles that are offensive, impersonate
+          someone or promote something unlawful, and refund you if we do.
+        </li>
       </ul>
       <h2>Using what you buy</h2>
       <ul>
         <li>Your pass is for your personal use. You may use what you learn to make your own content.</li>
-        <li>Please don’t share, resell or republish the playbook, templates or recordings.</li>
+        <li>Please don’t share, resell or republish the guide or templates.</li>
       </ul>
       <h2>Refunds</h2>
       <p>
         {/* TODO: confirm your refund policy */}
-        TODO: state your refund policy here (for example, whether refunds are available because passes are digital products delivered
+        TODO: state your refund policy here (for example, whether refunds are available because the guide is a digital product delivered
         instantly).
       </p>
       <h2>No guarantees</h2>
       <p>
-        The passes share the workflow we use. Results depend on your content, consistency and many factors outside our control, so we can’t
+        The guide shares the workflow we use. Results depend on your content, consistency and many factors outside our control, so we can’t
         guarantee any number of views, followers or earnings.
       </p>
       <h2>Changes</h2>

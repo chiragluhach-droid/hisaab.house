@@ -9,7 +9,7 @@ import { ArrowIcon, CloseIcon, InstagramIcon, MenuIcon, WhatsAppIcon } from "./i
 
 const { nav } = config;
 const desktopLinks = nav.filter((l) => !("desktop" in l) || l.desktop !== false);
-const entryPass = product("hisaab");
+const [guide, founder] = [product("guide"), product("founder")];
 
 function Logo({ size }: { size: "sm" | "lg" }) {
   return (
@@ -113,9 +113,9 @@ export function SiteHeader() {
                 {l.label}
               </a>
             ))}
-            <BuyLink topic="hisaab" placement="header" className="btn btn-primary ml-3 !min-h-10 !px-4 text-[0.9375rem]">
-              Get the Pass
-            </BuyLink>
+            <a href="/#passes" className="btn btn-primary ml-3 !min-h-10 !px-4 text-[0.9375rem]">
+              {config.hero.primaryCta}
+            </a>
           </nav>
 
           <button
@@ -208,15 +208,16 @@ export function SiteHeader() {
               <div className="flex items-center gap-3">
                 <Logo size="lg" />
                 <div className="min-w-0 flex-1">
-                  <p className="font-semibold leading-tight">{entryPass.name}</p>
+                  <p className="font-semibold leading-tight">Two passes, one-time</p>
                   <p className="label mt-1">
-                    <span className="text-mustard">{formatPrice(entryPass)}</span> · one-time · on WhatsApp
+                    {guide.name} <span className="text-mustard">{formatPrice(guide)}</span> · {founder.name}{" "}
+                    <span className="text-mustard">{formatPrice(founder)}</span>
                   </p>
                 </div>
               </div>
-              <BuyLink topic="hisaab" placement="menu" className="btn btn-primary mt-4 w-full" onClick={close}>
+              <a href="/#passes" className="btn btn-primary mt-4 w-full" onClick={close}>
                 {config.hero.primaryCta}
-              </BuyLink>
+              </a>
             </div>
             <div className="mt-3 grid grid-cols-2 gap-3">
               <a href={config.contact.instagramUrl} rel="noopener" className="btn btn-secondary !min-h-12 !px-3 text-[0.9375rem]">
