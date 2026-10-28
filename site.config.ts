@@ -8,13 +8,15 @@
  * Search for "TODO" to find everything that still needs your input.
  */
 
-export type ProductId = "guide" | "founder";
+export type ProductId = "guide" | "character" | "founder";
 
 export type Product = {
   id: ProductId;
   name: string;
   /** Price in INR. `null` shows `priceLabel` instead (e.g. "Price on request"). */
   price: number | null;
+  /** Optional "was" price, shown struck through with the saving (e.g. 999 when `price` is 799). */
+  compareAt?: number;
   priceLabel?: string;
   tagline: string;
   /** Shown on the card as a highlighted badge. */
@@ -69,7 +71,7 @@ const config = {
     { id: "process", label: "Process", hint: "Six steps, idea to vote" },
     { id: "inside", label: "What's inside", hint: "Every chapter of the guide", desktop: false },
     { id: "founders", label: "Founder's Pass", hint: "Your @ in the story" },
-    { id: "passes", label: "Pricing", hint: "Guide or Founder's Pass" },
+    { id: "passes", label: "Pricing", hint: "Guide, Character or Founder's Pass" },
     { id: "faq", label: "FAQ", hint: "Payment, delivery and tools" },
   ],
 
@@ -169,6 +171,7 @@ const config = {
         { title: "Growth", text: "Turning one series into a page that keeps growing." },
         { title: "Bonus: prompt templates", text: "The prompt templates I use." },
         { title: "Bonus: production checklist", text: "Every step from idea to post, on one page." },
+        { title: "Bonus: screen recording", text: "Watch one complete reel being made, start to finish." },
       ],
     },
   },
@@ -179,6 +182,7 @@ const config = {
     { id: "playbook", label: "Step-by-step guide (PDF + Notion)" },
     { id: "prompts", label: "Prompt templates (voice + characters)" },
     { id: "checklist", label: "Production checklist" },
+    { id: "recording", label: "Screen recording of one complete reel, start to finish" },
     { id: "call", label: "1:1 call to plan your first series" },
   ],
 
@@ -187,22 +191,34 @@ const config = {
       id: "guide",
       name: "Hisaab Guide",
       price: 499,
-      tagline: "Everything I do to make these reels, step by step — plus a 1:1 call.",
+      tagline: "Everything I do to make these reels, step by step — plus a full screen recording and a 1:1 call.",
       message: "Hi Hisaab House, I'd like to purchase the Hisaab Guide (₹499).",
       buyUrl: null,
       cta: "Get the Guide · ₹499",
-      includes: ["playbook", "prompts", "checklist", "call"],
+      includes: ["playbook", "prompts", "checklist", "recording", "call"],
+    },
+    {
+      id: "character",
+      name: "Character Pass",
+      price: 499,
+      tagline: "Just the story: your @ becomes a character in Har Note Ka Hisaab Hota Hai.",
+      message: "Hi Hisaab House, I'd like to purchase the Character Pass (₹499).",
+      buyUrl: null,
+      cta: "Become a Character · ₹499",
+      includes: ["story"],
+      cardLines: ["Be a part of the story", "Your @ as a character in the series", "(Guide not included)"],
     },
     {
       id: "founder",
       name: "Founder's Pass",
-      price: 999,
+      price: 799,
+      compareAt: 999,
       tagline: "Become a character in Har Note Ka Hisaab Hota Hai. The full guide comes with it.",
       badge: "Be in the story",
-      message: "Hi Hisaab House, I'd like to purchase the Founder's Pass (₹999).",
+      message: "Hi Hisaab House, I'd like to purchase the Founder's Pass (₹799).",
       buyUrl: null,
-      cta: "Become a Founder · ₹999",
-      includes: ["story", "playbook", "prompts", "checklist", "call"],
+      cta: "Become a Founder · ₹799",
+      includes: ["story", "playbook", "prompts", "checklist", "recording", "call"],
       cardLines: ["Be a part of the story", "Your @ as a character in the series", "(Guide included & 1:1 call)"],
     },
   ] satisfies Product[] as Product[],
@@ -256,7 +272,7 @@ const config = {
     },
     {
       q: "What does \"your @ in the story\" mean?",
-      a: "With the Founder's Pass, your Instagram @ becomes a character in Har Note Ka Hisaab Hota Hai — you're part of the series. You also get the full Hisaab Guide and the 1:1 call. TODO: describe how a founder's character shows up.",
+      a: "With the Founder's Pass or the Character Pass, your Instagram @ becomes a character in Har Note Ka Hisaab Hota Hai — you're part of the series. The Founder's Pass also includes the full Hisaab Guide and the 1:1 call; the Character Pass is just the story. TODO: describe how a founder's character shows up.",
     },
     {
       q: "What language is the content in?",
@@ -271,7 +287,7 @@ const config = {
   closing: {
     eyebrow: "Case open",
     headline: "Start your first series.",
-    text: "Questions before you buy? Message us — we'll help you pick the guide or the Founder's Pass.",
+    text: "Questions before you buy? Message us — we'll help you pick the right pass.",
     cta: "Chat on WhatsApp",
     /** ISO date of the next launch, e.g. "2026-11-15T19:00:00+05:30". `null` hides the countdown. */
     nextLaunch: null as string | null,

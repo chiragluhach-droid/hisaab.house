@@ -2,14 +2,15 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import config from "@config";
-import { formatPrice, product } from "@/lib/contact";
+import { formatPrice } from "@/lib/contact";
 import { Art } from "./Art";
 import { BuyLink } from "./BuyLink";
 import { ArrowIcon, CloseIcon, InstagramIcon, MenuIcon, WhatsAppIcon } from "./icons";
 
 const { nav } = config;
 const desktopLinks = nav.filter((l) => !("desktop" in l) || l.desktop !== false);
-const [guide, founder] = [product("guide"), product("founder")];
+const passes = config.products;
+const fromPrice = formatPrice(passes.reduce((a, b) => ((b.price ?? Infinity) < (a.price ?? Infinity) ? b : a)));
 
 function Logo({ size }: { size: "sm" | "lg" }) {
   return (
@@ -208,11 +209,10 @@ export function SiteHeader() {
               <div className="flex items-center gap-3">
                 <Logo size="lg" />
                 <div className="min-w-0 flex-1">
-                  <p className="font-semibold leading-tight">Two passes, one-time</p>
-                  <p className="label mt-1">
-                    {guide.name} <span className="text-mustard">{formatPrice(guide)}</span> · {founder.name}{" "}
-                    <span className="text-mustard">{formatPrice(founder)}</span>
+                  <p className="font-semibold leading-tight">
+                    {passes.length} passes, from <span className="text-mustard">{fromPrice}</span>
                   </p>
+                  <p className="label mt-1">{passes.map((p) => p.name.replace(/ Pass$/, "")).join(" · ")} · one-time</p>
                 </div>
               </div>
               <a href="/#passes" className="btn btn-primary mt-4 w-full" onClick={close}>

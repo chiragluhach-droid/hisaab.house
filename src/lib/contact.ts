@@ -22,6 +22,14 @@ export function buyHref(topic: Topic) {
   return p.buyUrl ?? waLink(p.message);
 }
 
+const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
+
 export function formatPrice(p: { price: number | null; priceLabel?: string }) {
-  return p.price == null ? (p.priceLabel ?? "Price on request") : `₹${p.price.toLocaleString("en-IN")}`;
+  return p.price == null ? (p.priceLabel ?? "Price on request") : inr(p.price);
+}
+
+/** The struck-through "was" price and the saving, when a product has `compareAt`. */
+export function discount(p: { price: number | null; compareAt?: number }) {
+  if (p.price == null || !p.compareAt || p.compareAt <= p.price) return null;
+  return { was: inr(p.compareAt), save: inr(p.compareAt - p.price) };
 }

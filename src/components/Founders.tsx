@@ -2,9 +2,11 @@ import type { ReactNode } from "react";
 import config from "@config";
 import { formatPrice, product } from "@/lib/contact";
 import { BuyLink } from "./BuyLink";
+import { WasPrice } from "./WasPrice";
 import { WhatsAppIcon } from "./icons";
 
 const founder = product("founder");
+const character = product("character");
 
 /** Headline with `highlight` on its own line in mustard, and the "@" set in mono. */
 function Highlight({ text, highlight }: { text: string; highlight: string }) {
@@ -107,9 +109,22 @@ function Ticket({ note }: { note: string }) {
           <WhatsAppIcon className="h-5 w-5" />
           {founder.cta}
         </BuyLink>
-        <p className="label mt-3 text-center !text-[0.6875rem]">
-          {formatPrice(founder)} · one-time · pay on WhatsApp
+        <p className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5">
+          <WasPrice p={founder} />
+          <span className="label !text-[0.6875rem]">One-time · pay on WhatsApp</span>
         </p>
+        <div className="mt-5 flex items-center justify-between gap-3 rounded-xl border border-line bg-ink/50 px-4 py-3">
+          <span className="min-w-0 text-[0.875rem] leading-snug text-cream/75">
+            Just want the @? <span className="whitespace-nowrap font-semibold text-cream">{character.name}</span>
+          </span>
+          <BuyLink
+            topic="character"
+            placement="founders"
+            className="inline-flex min-h-11 shrink-0 items-center rounded-lg border border-mustard/50 px-3.5 font-mono text-[0.875rem] font-semibold text-mustard transition-colors active:bg-mustard/10"
+          >
+            {formatPrice(character)}
+          </BuyLink>
+        </div>
       </div>
     </div>
   );

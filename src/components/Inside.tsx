@@ -11,7 +11,7 @@ export function Inside() {
         index="03"
         label="What's inside"
         title="Everything I do, written down."
-        intro="The Hisaab Guide covers the whole workflow, chapter by chapter — and comes with a 1:1 call."
+        intro="The Hisaab Guide covers the whole workflow, chapter by chapter — with a screen recording of one complete reel and a 1:1 call."
       />
       <div className="mt-10 max-w-3xl">
         <Collapsible title={playbook.title} meta={`${playbook.meta} · ${playbook.chapters.length} chapters`}>

@@ -69,7 +69,7 @@ In Netlify → **Site configuration → Environment variables**, add any of thes
 - `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`: your Plausible site domain
 - `NEXT_PUBLIC_META_PIXEL_ID`: Meta Pixel
 
-Each WhatsApp button click sends a `whatsapp_click` event with `product` (guide / founder / general) and `placement` (hero, card, founders, floating, faq, closing, header, menu, footer). The UTM tags from your Instagram bio link are attached too. The Meta Pixel also receives a standard `Contact` event.
+Each WhatsApp button click sends a `whatsapp_click` event with `product` (guide / character / founder / general) and `placement` (hero, card, founders, floating, faq, closing, header, menu, footer). The UTM tags from your Instagram bio link are attached too. The Meta Pixel also receives a standard `Contact` event.
 
 ## 4. Connect a custom domain
 1. Netlify → your site → **Domain management → Add a domain** → enter it (e.g. `hisaabhouse.in`).

@@ -3,6 +3,7 @@ import { formatPrice } from "@/lib/contact";
 import { CheckIcon, DashIcon, WhatsAppIcon } from "./icons";
 import { Section, SectionHeading } from "./SectionHeading";
 import { BuyLink } from "./BuyLink";
+import { WasPrice } from "./WasPrice";
 
 export function Pricing() {
   const { products, features, pricingNote } = config;
@@ -17,7 +18,7 @@ export function Pricing() {
           intro="One-time payment. No subscription."
         />
 
-        <div className="mx-auto mt-8 grid max-w-4xl gap-6 md:mt-10 md:grid-cols-2 md:gap-5 md:items-stretch">
+        <div className="mx-auto mt-8 grid gap-6 md:mt-10 md:grid-cols-2 md:gap-5 md:items-stretch lg:grid-cols-3">
           {products.map((p) => (
             <PriceCard key={p.id} p={p} />
           ))}
@@ -29,18 +30,21 @@ export function Pricing() {
         </p>
 
         {/* Comparison table — wider screens only. On phones each card carries its own checklist. */}
-        <div className="mx-auto mt-14 hidden max-w-4xl md:block">
+        <div className="mx-auto mt-14 hidden md:block">
           <h3 className="text-xl font-semibold">Compare</h3>
           <table className="mt-5 w-full table-fixed border-separate border-spacing-0 overflow-hidden rounded-2xl border border-line text-left">
             <thead>
               <tr className="bg-ink-2">
-                <th scope="col" className="label w-1/2 p-4 font-normal">
+                <th scope="col" className="label w-[40%] p-4 font-normal">
                   What's included
                 </th>
                 {products.map((p) => (
                   <th key={p.id} scope="col" className={`p-4 text-center ${p.badge ? "bg-red/10" : ""}`}>
                     <span className="block font-semibold">{p.name}</span>
-                    <span className="font-mono text-sm text-muted">{formatPrice(p)}</span>
+                    <span className="font-mono text-sm text-muted">
+                      {p.compareAt && <span className="mr-1.5 text-cream/35 line-through">₹{p.compareAt}</span>}
+                      {formatPrice(p)}
+                    </span>
                   </th>
                 ))}
               </tr>
@@ -91,10 +95,13 @@ function PriceCard({ p }: { p: Product }) {
         <h3 id={`price-${p.id}`} className="text-lg font-semibold leading-tight md:text-xl">
           {p.name}
         </h3>
-        <p className="flex shrink-0 items-baseline gap-1.5">
-          <span className="font-mono text-[2rem] font-semibold leading-none tracking-tight md:text-[2.75rem]">{formatPrice(p)}</span>
-          <span className="label !text-[0.625rem]">One-time</span>
-        </p>
+        <div className="flex shrink-0 flex-col items-end gap-1.5">
+          <WasPrice p={p} />
+          <p className="flex items-baseline gap-1.5">
+            <span className="font-mono text-[2rem] font-semibold leading-none tracking-tight md:text-[2.75rem]">{formatPrice(p)}</span>
+            <span className="label !text-[0.625rem]">One-time</span>
+          </p>
+        </div>
       </div>
       <p className="mt-2.5 text-[0.875rem] leading-snug text-cream/70 md:mt-3 md:text-[0.9375rem] md:leading-relaxed">{p.tagline}</p>
 

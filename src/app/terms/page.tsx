@@ -9,7 +9,7 @@ export default function Terms() {
   return (
     <LegalPage title="Terms">
       <p>
-        These terms apply when you buy the Hisaab Guide or the Founder’s Pass from {legal.businessName}. By completing a purchase you agree to them.
+        These terms apply when you buy the Hisaab Guide, the Character Pass or the Founder’s Pass from {legal.businessName}. By completing a purchase you agree to them.
       </p>
       <h2>Buying a pass</h2>
       <ul>
@@ -21,7 +21,7 @@ export default function Terms() {
         </li>
         <li>The 1:1 call is scheduled on WhatsApp at a time that suits us both.</li>
         <li>
-          Founder’s Pass: your Instagram handle appears as a character in the series. We may decline handles that are offensive, impersonate
+          Founder’s Pass and Character Pass: your Instagram handle appears as a character in the series. We may decline handles that are offensive, impersonate
           someone or promote something unlawful, and refund you if we do.
         </li>
       </ul>
