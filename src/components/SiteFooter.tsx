@@ -1,6 +1,6 @@
 import config from "@config";
-import { InstagramIcon, SendIcon } from "./icons";
-import { DmLink } from "./DmLink";
+import { InstagramIcon, WhatsAppIcon } from "./icons";
+import { BuyLink } from "./BuyLink";
 
 export function SiteFooter() {
   return (
@@ -14,10 +14,10 @@ export function SiteFooter() {
           <a href={config.contact.instagramUrl} rel="noopener" className="flex min-h-12 items-center gap-2.5 text-cream/85 hover:text-cream md:px-3">
             <InstagramIcon className="h-5 w-5" />@{config.contact.instagramHandle}
           </a>
-          <DmLink topic="general" placement="footer" className="flex min-h-12 items-center gap-2.5 text-cream/85 hover:text-cream md:px-3">
-            <SendIcon className="h-5 w-5" />
-            Send a DM
-          </DmLink>
+          <BuyLink topic="general" placement="footer" className="flex min-h-12 items-center gap-2.5 text-cream/85 hover:text-cream md:px-3">
+            <WhatsAppIcon className="h-5 w-5" />
+            WhatsApp
+          </BuyLink>
           <a href="/privacy" className="flex min-h-12 items-center text-cream/65 hover:text-cream md:px-3">
             Privacy Policy
           </a>

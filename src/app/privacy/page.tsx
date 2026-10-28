@@ -19,7 +19,7 @@ export default function Privacy() {
           visited, buttons tapped, the link you arrived from, device type) through Google Analytics, Plausible and/or the Meta Pixel.
         </li>
         <li>
-          <strong>On Instagram:</strong> when you message us, we receive your Instagram username, profile name and the messages you send, including payment
+          <strong>On WhatsApp:</strong> when you message us, we receive your name, phone number and the messages you send, including payment
           confirmations.
         </li>
       </ul>
@@ -32,7 +32,7 @@ export default function Privacy() {
       <p>We don’t sell your information, and we don’t send marketing messages unless you ask for them.</p>
       <h2>Third parties</h2>
       <p>
-        Instagram (Meta) handles our chats. Payments are made through the method we share with you in the DM, and that provider’s own
+        WhatsApp (Meta) handles our chats. Payments are made through the method we share with you on WhatsApp, and that provider’s own
         privacy policy applies. Analytics providers, if enabled, process usage data on our behalf. The promo video is served by Cloudinary.
       </p>
       <h2>Cookies</h2>

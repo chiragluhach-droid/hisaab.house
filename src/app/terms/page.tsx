@@ -13,13 +13,13 @@ export default function Terms() {
       </p>
       <h2>Buying a pass</h2>
       <ul>
-        <li>Purchases are made by Instagram DM with @hisaab.house. Tap a buy button, send the message, and we’ll reply with payment details.</li>
+        <li>Purchases are made on WhatsApp. Tap a buy button, send the message, and we’ll reply with payment details.</li>
         <li>All prices are in Indian Rupees (INR) and are one-time payments.</li>
         <li>
-          <strong>Passes are delivered by Instagram DM after payment.</strong> Once payment is confirmed, we send your pass files or access links
+          <strong>Passes are delivered on WhatsApp after payment.</strong> Once payment is confirmed, we send your pass files or access links
           in the same chat.
         </li>
-        <li>The 1:1 call included with the Over-the-Shoulder Pass is scheduled over Instagram DM at a time that suits us both.</li>
+        <li>The 1:1 call included with the Over-the-Shoulder Pass is scheduled on WhatsApp at a time that suits us both.</li>
       </ul>
       <h2>Using what you buy</h2>
       <ul>

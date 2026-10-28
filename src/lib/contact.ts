@@ -11,14 +11,15 @@ export function product(id: ProductId) {
   return p;
 }
 
-/** The URL a button opens: the product's `buyUrl`, or the Instagram DM. */
-export function buyHref(topic: Topic) {
-  return (topic !== "general" && product(topic).buyUrl) || config.contact.instagramDm;
+export function waLink(message: string) {
+  return `https://wa.me/${config.contact.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
-/** The message copied to the clipboard for the buyer to paste into the DM. */
-export function messageFor(topic: Topic) {
-  return topic === "general" ? config.messages.general : product(topic).message;
+/** The URL a button opens: the product's `buyUrl`, or WhatsApp with its pre-filled message. */
+export function buyHref(topic: Topic) {
+  if (topic === "general") return waLink(config.messages.general);
+  const p = product(topic);
+  return p.buyUrl ?? waLink(p.message);
 }
 
 export function formatPrice(p: { price: number | null; priceLabel?: string }) {

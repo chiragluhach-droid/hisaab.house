@@ -1,7 +1,7 @@
 import config from "@config";
 import { Countdown } from "./Countdown";
-import { InstagramIcon } from "./icons";
-import { DmLink } from "./DmLink";
+import { WhatsAppIcon } from "./icons";
+import { BuyLink } from "./BuyLink";
 
 export function Closing() {
   const { closing } = config;
@@ -16,10 +16,10 @@ export function Closing() {
           <p className="mx-auto mt-3 max-w-md text-cream/75 md:text-lg">{closing.text}</p>
           {closing.nextLaunch && <Countdown to={closing.nextLaunch} label={closing.nextLaunchLabel} />}
           <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3">
-            <DmLink topic="general" placement="closing" className="btn btn-primary w-full">
-              <InstagramIcon className="h-5 w-5" />
+            <BuyLink topic="general" placement="closing" className="btn btn-primary w-full">
+              <WhatsAppIcon className="h-5 w-5" />
               {closing.cta}
-            </DmLink>
+            </BuyLink>
             <p className="label">{config.contact.replyTime}</p>
           </div>
         </div>

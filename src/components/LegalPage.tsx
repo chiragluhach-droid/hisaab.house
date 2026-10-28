@@ -24,7 +24,7 @@ export function Contact() {
   return (
     <ul>
       <li>
-        Phone: <a href={`tel:${legal.contactPhone.replace(/\s/g, "")}`}>{legal.contactPhone}</a>
+        WhatsApp / phone: <a href={`https://wa.me/${contact.whatsappNumber}`}>{legal.contactPhone}</a>
       </li>
       <li>
         Instagram: <a href={contact.instagramUrl}>@{contact.instagramHandle}</a>

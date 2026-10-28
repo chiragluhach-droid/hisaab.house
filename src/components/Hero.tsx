@@ -1,8 +1,7 @@
 import config from "@config";
 import { Counter } from "./Counter";
 import { HeroVideo } from "./HeroVideo";
-import { DmHint } from "./DmHint";
-import { DmLink } from "./DmLink";
+import { BuyLink } from "./BuyLink";
 
 /** Keeps the last two words together so the headline never ends on a lone word. */
 const noWidow = (s: string) => s.replace(/ (\S+)$/, " $1");
@@ -43,14 +42,13 @@ export function Hero() {
           <p className="mt-4 max-w-xl text-[1.0625rem] leading-[1.55] text-cream/80 md:mt-6 md:text-xl">{hero.subheadline}</p>
 
           <div id="hero-cta" className="mt-6 flex flex-col gap-3 sm:flex-row md:mt-9">
-            <DmLink topic="hisaab" placement="hero" className="btn btn-primary w-full sm:w-auto">
+            <BuyLink topic="hisaab" placement="hero" className="btn btn-primary w-full sm:w-auto">
               {hero.primaryCta}
-            </DmLink>
+            </BuyLink>
             <a href="#inside" className="btn btn-secondary w-full sm:w-auto">
               {hero.secondaryCta}
             </a>
           </div>
-          <DmHint className="mt-3" />
 
           <dl className="mt-10 hidden grid-cols-3 divide-x divide-line rounded-2xl border border-line bg-ink-2/60 md:grid">
             {statList.map((s) => (

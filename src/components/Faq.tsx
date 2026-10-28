@@ -1,7 +1,7 @@
 import config from "@config";
-import { InstagramIcon, PlusIcon } from "./icons";
+import { PlusIcon, WhatsAppIcon } from "./icons";
 import { Section, SectionHeading } from "./SectionHeading";
-import { DmLink } from "./DmLink";
+import { BuyLink } from "./BuyLink";
 
 export function Faq() {
   return (
@@ -41,10 +41,10 @@ function FaqContact() {
     <div className="card p-5">
       <p className="font-semibold">Still have a question?</p>
       <p className="mt-1 text-[0.9375rem] text-cream/70">{config.contact.replyTime}</p>
-      <DmLink topic="general" placement="faq" className="btn btn-secondary mt-4 w-full">
-        <InstagramIcon className="h-5 w-5 text-mustard" />
-        Ask on Instagram
-      </DmLink>
+      <BuyLink topic="general" placement="faq" className="btn btn-secondary mt-4 w-full">
+        <WhatsAppIcon className="h-5 w-5 text-[#25d366]" />
+        Ask on WhatsApp
+      </BuyLink>
     </div>
   );
 }

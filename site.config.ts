@@ -1,7 +1,7 @@
 /**
  * HISAAB HOUSE — site config
  * ---------------------------------------------------------------
- * Every piece of copy, price, number, link and DM message on the
+ * Every piece of copy, price, number, link and WhatsApp message on the
  * site lives here. Edit this file, save, and rebuild — no component
  * changes needed.
  *
@@ -19,10 +19,10 @@ export type Product = {
   tagline: string;
   /** Shown on the card as a highlighted badge. */
   badge?: string;
-  /** Message copied to the buyer's clipboard when they tap this product's button (Instagram can't pre-fill DMs). */
+  /** Pre-filled WhatsApp message for this product. */
   message: string;
   /**
-   * Where the buy button goes. Leave `null` to open the Instagram DM (`contact.instagramDm`).
+   * Where the buy button goes. Leave `null` to open WhatsApp with `message`.
    * When you add a payment gateway later, put its checkout URL here.
    */
   buyUrl: string | null;
@@ -47,8 +47,8 @@ const config = {
   contact: {
     instagramHandle: "hisaab.house",
     instagramUrl: "https://www.instagram.com/hisaab.house/",
-    /** Opens a DM with the account — straight into the chat inside the Instagram app. */
-    instagramDm: "https://ig.me/m/hisaab.house",
+    /** International format, digits only — used to build wa.me links. */
+    whatsappNumber: "918130809374",
     replyTime: "We usually reply within 1–2 hours.",
   },
 
@@ -70,7 +70,7 @@ const config = {
     { id: "faq", label: "FAQ", hint: "Payment, delivery and tools" },
   ],
 
-  /** DM messages that aren't tied to a product. */
+  /** WhatsApp messages that aren't tied to a product. */
   messages: {
     general: "Hi Hisaab House, I have a question about your passes.",
   },
@@ -218,7 +218,7 @@ const config = {
   ] satisfies Product[] as Product[],
 
   pricingNote:
-    "Tap a button to open our Instagram DMs — your message is copied, just paste and send. We'll share payment details and deliver your pass in the chat. We usually reply within 1–2 hours.",
+    "Message us on WhatsApp to purchase — we'll share payment details and deliver your pass there. We usually reply within 1–2 hours.",
 
   audience: {
     for: [
@@ -245,7 +245,7 @@ const config = {
     },
     {
       q: "How do I pay and receive the pass?",
-      a: "Tap any buy button and our Instagram DMs open, with your message already copied — just paste and send. We reply with payment details, and once payment is confirmed we deliver your pass in the same chat.",
+      a: "Tap any buy button and WhatsApp opens with a pre-filled message. We reply with payment details, and once payment is confirmed we deliver your pass on WhatsApp.",
     },
     {
       q: "What language is the content in?",
@@ -253,7 +253,7 @@ const config = {
     },
     {
       q: "Can I ask questions after purchase?",
-      a: "Yes. Message us on Instagram — the same chat you bought through. TODO: say how long post-purchase support lasts.",
+      a: "Yes. Message us on WhatsApp — the same chat you bought through. TODO: say how long post-purchase support lasts.",
     },
   ],
 
@@ -261,14 +261,14 @@ const config = {
     eyebrow: "Case open",
     headline: "Start your first series.",
     text: "Questions before you buy? Message us — we'll help you pick the right pass.",
-    cta: "DM us on Instagram",
+    cta: "Chat on WhatsApp",
     /** ISO date of the next launch, e.g. "2026-11-15T19:00:00+05:30". `null` hides the countdown. */
     nextLaunch: null as string | null,
     nextLaunchLabel: "Next launch in",
   },
 
   footer: {
-    note: "Passes are delivered by Instagram DM after payment.",
+    note: "Passes are delivered on WhatsApp after payment.",
   },
 };
 

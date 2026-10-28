@@ -1,9 +1,8 @@
 import config, { type Product } from "@config";
 import { formatPrice } from "@/lib/contact";
-import { CheckIcon, DashIcon, InstagramIcon } from "./icons";
+import { CheckIcon, DashIcon, WhatsAppIcon } from "./icons";
 import { Section, SectionHeading } from "./SectionHeading";
-import { DmHint } from "./DmHint";
-import { DmLink } from "./DmLink";
+import { BuyLink } from "./BuyLink";
 
 export function Pricing() {
   const { products, features, pricingNote } = config;
@@ -25,7 +24,7 @@ export function Pricing() {
         </div>
 
         <p className="mx-auto mt-6 flex max-w-xl items-start gap-3 rounded-xl border border-line bg-ink-2 p-4 text-[0.9375rem] leading-relaxed text-cream/80 md:text-center">
-          <InstagramIcon className="mt-0.5 h-5 w-5 shrink-0 text-mustard md:hidden" />
+          <WhatsAppIcon className="mt-0.5 h-5 w-5 shrink-0 text-[#25d366] md:hidden" />
           {pricingNote}
         </p>
 
@@ -115,11 +114,10 @@ function PriceCard({ p }: { p: Product }) {
         ))}
       </ul>
 
-      <DmLink topic={p.id} placement="card" className={`btn mt-7 w-full ${featured ? "btn-primary" : "btn-secondary"}`}>
-        <InstagramIcon className="h-5 w-5" />
+      <BuyLink topic={p.id} placement="card" className={`btn mt-7 w-full ${featured ? "btn-primary" : "btn-secondary"}`}>
+        <WhatsAppIcon className="h-5 w-5" />
         {p.cta}
-      </DmLink>
-      <DmHint className="mt-2.5 text-center" />
+      </BuyLink>
     </article>
   );
 }

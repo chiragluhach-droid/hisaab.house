@@ -1,6 +1,6 @@
 # Hisaab House — website
 
-A static sales site for [@hisaab.house](https://www.instagram.com/hisaab.house/), built mobile-first with Next.js, TypeScript and Tailwind CSS. It has no backend: every buy button opens an Instagram DM with @hisaab.house.
+A static sales site for [@hisaab.house](https://www.instagram.com/hisaab.house/), built mobile-first with Next.js, TypeScript and Tailwind CSS. It has no backend: every buy button opens WhatsApp with a pre-filled message.
 
 ```bash
 npm install
@@ -22,15 +22,15 @@ npm run preview    # serve ./out at http://localhost:4173
 | Promo video + poster URLs | `video` |
 | Episode titles, view counts, **reel links** | `series.episodes` |
 | Prices, card text, what each pass includes | `products` (+ `features` for the comparison rows) |
-| **DM messages** (copied to the buyer's clipboard on tap; Instagram can't pre-fill DMs) | each product's `message`, plus `messages.general` |
-| Instagram DM link | `contact.instagramDm` (`https://ig.me/m/hisaab.house`) |
+| **WhatsApp pre-filled messages** | each product's `message`, plus `messages.general` |
+| WhatsApp number | `contact.whatsappNumber` (digits only, with country code: `918130809374`) |
 | FAQ | `faq` |
 | Countdown to next launch | `closing.nextLaunch`, e.g. `"2026-11-15T19:00:00+05:30"`. `null` hides it |
 | Name/contact on the legal pages | `legal` |
 
 Search the file for **`TODO`** to find what still needs your input: reel URLs, Ep 1 views, the tools/language FAQ answers, the refund policy (in `src/app/terms/page.tsx`), and an optional email.
 
-**Adding a payment gateway later:** set a product's `buyUrl` to the checkout link. Every button for that product will go there instead of the Instagram DM, and the design doesn't change.
+**Adding a payment gateway later:** set a product's `buyUrl` to the checkout link. Every button for that product will go there instead of WhatsApp, and the design doesn't change.
 
 ## 2. Add or change images
 
@@ -69,7 +69,7 @@ In Netlify → **Site configuration → Environment variables**, add any of thes
 - `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`: your Plausible site domain
 - `NEXT_PUBLIC_META_PIXEL_ID`: Meta Pixel
 
-Each buy/chat button click sends an `instagram_dm_click` event with `product` (hisaab / ots / general) and `placement` (hero, card, floating, faq, closing, header, menu, footer). The UTM tags from your Instagram bio link are attached too. The Meta Pixel also receives a standard `Contact` event.
+Each WhatsApp button click sends a `whatsapp_click` event with `product` (hisaab / ots / general) and `placement` (hero, card, floating, faq, closing, header, menu, footer). The UTM tags from your Instagram bio link are attached too. The Meta Pixel also receives a standard `Contact` event.
 
 ## 4. Connect a custom domain
 1. Netlify → your site → **Domain management → Add a domain** → enter it (e.g. `hisaabhouse.in`).
@@ -84,6 +84,6 @@ With `npm run preview` running:
 
 ```bash
 node scripts/qa-screens.mjs screenshots 360 390 430 1440   # screenshots + overflow/tap-target report
-node scripts/qa-buttons.mjs                                 # checks every DM button: link, copied message, analytics event
+node scripts/qa-buttons.mjs                                 # checks every WhatsApp button: number, message, analytics event
 ```
 # hisaab.house

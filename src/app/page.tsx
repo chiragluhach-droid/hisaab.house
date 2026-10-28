@@ -1,7 +1,7 @@
 import { Audience } from "@/components/Audience";
 import { Closing } from "@/components/Closing";
 import { Faq } from "@/components/Faq";
-import { FloatingDm } from "@/components/FloatingDm";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Hero } from "@/components/Hero";
 import { Inside } from "@/components/Inside";
 import { Pricing } from "@/components/Pricing";
@@ -27,7 +27,7 @@ export default function Home() {
         <Closing />
       </main>
       <SiteFooter />
-      <FloatingDm />
+      <FloatingWhatsApp />
     </>
   );
 }

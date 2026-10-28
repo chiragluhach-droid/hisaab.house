@@ -4,8 +4,8 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import config from "@config";
 import { formatPrice, product } from "@/lib/contact";
 import { Art } from "./Art";
-import { DmLink } from "./DmLink";
-import { ArrowIcon, CloseIcon, InstagramIcon, MenuIcon } from "./icons";
+import { BuyLink } from "./BuyLink";
+import { ArrowIcon, CloseIcon, InstagramIcon, MenuIcon, WhatsAppIcon } from "./icons";
 
 const { nav } = config;
 const desktopLinks = nav.filter((l) => !("desktop" in l) || l.desktop !== false);
@@ -113,9 +113,9 @@ export function SiteHeader() {
                 {l.label}
               </a>
             ))}
-            <DmLink topic="hisaab" placement="header" className="btn btn-primary ml-3 !min-h-10 !px-4 text-[0.9375rem]">
+            <BuyLink topic="hisaab" placement="header" className="btn btn-primary ml-3 !min-h-10 !px-4 text-[0.9375rem]">
               Get the Pass
-            </DmLink>
+            </BuyLink>
           </nav>
 
           <button
@@ -210,18 +210,24 @@ export function SiteHeader() {
                 <div className="min-w-0 flex-1">
                   <p className="font-semibold leading-tight">{entryPass.name}</p>
                   <p className="label mt-1">
-                    <span className="text-mustard">{formatPrice(entryPass)}</span> · one-time · via Instagram DM
+                    <span className="text-mustard">{formatPrice(entryPass)}</span> · one-time · on WhatsApp
                   </p>
                 </div>
               </div>
-              <DmLink topic="hisaab" placement="menu" className="btn btn-primary mt-4 w-full" onClick={close}>
+              <BuyLink topic="hisaab" placement="menu" className="btn btn-primary mt-4 w-full" onClick={close}>
                 {config.hero.primaryCta}
-              </DmLink>
+              </BuyLink>
             </div>
-            <p className="label mt-2.5 text-center !text-[0.6875rem]">Message copied on tap · just paste &amp; send</p>
-            <a href={config.contact.instagramUrl} rel="noopener" className="btn btn-secondary mt-3 w-full !min-h-12 text-[0.9375rem]">
-              <InstagramIcon className="h-5 w-5" />@{config.contact.instagramHandle}
-            </a>
+            <div className="mt-3 grid grid-cols-2 gap-3">
+              <a href={config.contact.instagramUrl} rel="noopener" className="btn btn-secondary !min-h-12 !px-3 text-[0.9375rem]">
+                <InstagramIcon className="h-5 w-5" />
+                Instagram
+              </a>
+              <BuyLink topic="general" placement="menu" className="btn btn-secondary !min-h-12 !px-3 text-[0.9375rem]" onClick={close}>
+                <WhatsAppIcon className="h-5 w-5 text-[#25d366]" />
+                WhatsApp
+              </BuyLink>
+            </div>
           </div>
         </div>
       )}

@@ -38,7 +38,7 @@ export function track(event: string, params: Params = {}) {
     window.gtag?.("event", event, { ...data, transport_type: "beacon" });
     window.plausible?.(event, { props: data });
     window.fbq?.("trackCustom", event, data);
-    if (event === "instagram_dm_click") window.fbq?.("track", "Contact", data);
+    if (event === "whatsapp_click") window.fbq?.("track", "Contact", data);
   } catch {}
   if (process.env.NODE_ENV !== "production") console.info("[track]", event, data);
 }
