@@ -1,6 +1,6 @@
 import { discount } from "@/lib/contact";
 
-/** "₹999 · Save ₹200" — the struck-through old price and the saving. Renders nothing without `compareAt`. */
+/** "₹999 · 40% off" — the struck-through old price and the discount. Renders nothing without `compareAt`. */
 export function WasPrice({ p, className = "" }: { p: { price: number | null; compareAt?: number }; className?: string }) {
   const d = discount(p);
   if (!d) return null;
@@ -11,7 +11,7 @@ export function WasPrice({ p, className = "" }: { p: { price: number | null; com
         {d.was}
       </span>
       <span className="rounded-full bg-mustard px-2 py-0.5 font-mono text-[0.6875rem] font-bold uppercase tracking-wide text-ink">
-        Save {d.save}
+        {d.percent}% off
       </span>
     </span>
   );

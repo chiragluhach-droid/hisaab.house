@@ -15,7 +15,7 @@ export type Product = {
   name: string;
   /** Price in INR. `null` shows `priceLabel` instead (e.g. "Price on request"). */
   price: number | null;
-  /** Optional "was" price, shown struck through with the saving (e.g. 999 when `price` is 799). */
+  /** Optional "was" price, shown struck through with the % off (e.g. 499 when `price` is 299). */
   compareAt?: number;
   priceLabel?: string;
   tagline: string;
@@ -190,11 +190,12 @@ const config = {
     {
       id: "guide",
       name: "Hisaab Guide",
-      price: 499,
+      price: 299,
+      compareAt: 499,
       tagline: "Everything I do to make these reels, step by step — plus a full screen recording and a 1:1 call.",
-      message: "Hi Hisaab House, I'd like to purchase the Hisaab Guide (₹499).",
+      message: "Hi Hisaab House, I'd like to purchase the Hisaab Guide (₹299).",
       buyUrl: null,
-      cta: "Get the Guide · ₹499",
+      cta: "Get the Guide · ₹299",
       includes: ["playbook", "prompts", "checklist", "recording", "call"],
     },
     {
@@ -204,20 +205,20 @@ const config = {
       tagline: "Just the story: your @ becomes a character in Har Note Ka Hisaab Hota Hai.",
       message: "Hi Hisaab House, I'd like to purchase the Character Pass (₹499).",
       buyUrl: null,
-      cta: "Become a Character · ₹499",
+      cta: "Be a Character · ₹499",
       includes: ["story"],
       cardLines: ["Be a part of the story", "Your @ as a character in the series", "(Guide not included)"],
     },
     {
       id: "founder",
       name: "Founder's Pass",
-      price: 799,
+      price: 599,
       compareAt: 999,
       tagline: "Become a character in Har Note Ka Hisaab Hota Hai. The full guide comes with it.",
       badge: "Be in the story",
-      message: "Hi Hisaab House, I'd like to purchase the Founder's Pass (₹799).",
+      message: "Hi Hisaab House, I'd like to purchase the Founder's Pass (₹599).",
       buyUrl: null,
-      cta: "Become a Founder · ₹799",
+      cta: "Become a Founder · ₹599",
       includes: ["story", "playbook", "prompts", "checklist", "recording", "call"],
       cardLines: ["Be a part of the story", "Your @ as a character in the series", "(Guide included & 1:1 call)"],
     },

@@ -31,5 +31,5 @@ export function formatPrice(p: { price: number | null; priceLabel?: string }) {
 /** The struck-through "was" price and the saving, when a product has `compareAt`. */
 export function discount(p: { price: number | null; compareAt?: number }) {
   if (p.price == null || !p.compareAt || p.compareAt <= p.price) return null;
-  return { was: inr(p.compareAt), save: inr(p.compareAt - p.price) };
+  return { was: inr(p.compareAt), save: inr(p.compareAt - p.price), percent: Math.round(((p.compareAt - p.price) / p.compareAt) * 100) };
 }
